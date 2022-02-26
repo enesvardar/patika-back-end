@@ -108,6 +108,8 @@ dist
 # vuepress v2.x temp and cache directory
 .temp
 
+./SmartEdu/temp
+
 # Docusaurus cache and generated files
 .docusaurus
 
