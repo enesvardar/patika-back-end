@@ -3,6 +3,8 @@ const path = require('path');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
 const Post = require('./models/Post');
+const postController = require('./controllers/postControllers');
+const pageController = require('./controllers/pageControllers');
 
 mongoose
   .connect('mongodb://127.0.0.1/cleandb')
@@ -23,38 +25,13 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/', async (req, res) => {
-  const post = await Post.find({});
+app.get('/', postController.getAllPost);
+app.post('/newpost', postController.updatePost);
 
-  res.render('index', {
-    post,
-  });
-});
-
-app.get('/about', function (req, res) {
-  res.render('about');
-});
-
-app.get('/add_post', function (req, res) {
-  res.render('add_post');
-});
-
-app.get('/post/:id', async (req, res) => {
-  console.log(req.params.id)
-
-  const post = await Post.findById(req.params.id);
-
-  res.render('post',{
-    post
-  });
-
-
-});
-
-app.post('/newpost', async (req, res) => {
-  await Post.create(req.body);
-  res.redirect('/');
-});
+app.get('/about', pageController.getAboutPage);
+app.get('/add_post', pageController.getAddPostPage);
+app.get('/post/:id', pageController.getPostPage);
+app.get('/post/edit/:id', pageController.getEditPage);
 
 const port = 3000;
 app.listen(3000, () => {
