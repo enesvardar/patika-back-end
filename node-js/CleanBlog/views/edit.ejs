@@ -28,19 +28,19 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
 
-        <form method="POST" action="/newpost" novalidate>
+        <form method="POST" action="/updatepost/<%= post._id %>" novalidate>
 
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Post Title</label>
-              <input value="<%= post.title %>" type="text" name="title" class="form-control" placeholder="Title"  required>
+              <input value= "<%= post.title %>" type="text" name="title" class="form-control" placeholder="Title"  required>
               <p class="help-block text-danger"></p>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
               <label>Post Detail</label>detail
-              <textarea rows="5" name="detail" class="form-control" placeholder="Detail">"<%= post.detail %>"</textarea required>
+              <textarea rows="5" name="detail" class="form-control" placeholder="Detail"><%= post.detail %></textarea required>
               <p class="help-block text-danger"></p>
             </div>
           </div>

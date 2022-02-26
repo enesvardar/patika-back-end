@@ -26,7 +26,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get('/', postController.getAllPost);
-app.post('/newpost', postController.updatePost);
+app.post('/newpost', postController.addPost);
+app.post('/updatepost/:id', postController.updatePost);
+app.get('/post/del/:id', postController.delPost);
 
 app.get('/about', pageController.getAboutPage);
 app.get('/add_post', pageController.getAddPostPage);
@@ -35,5 +37,5 @@ app.get('/post/edit/:id', pageController.getEditPage);
 
 const port = 3000;
 app.listen(3000, () => {
-  console.log('Sunucu %d portunda başlatıldı...', port);
+  console.log('Sunucu %d portunda baslatildi...', port);
 });
