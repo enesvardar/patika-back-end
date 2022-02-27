@@ -1,5 +1,12 @@
 const Post = require('../models/Post');
 
+exports.getAllPost = async (req, res) => {
+  const post = await Post.find({});
+  res.render('index', {
+    post,
+  });
+};
+
 exports.getAboutPage = (req, res) => {
     res.render('about');
 };

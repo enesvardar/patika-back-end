@@ -2,9 +2,8 @@ const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
-const Post = require('./models/Post');
-const postController = require('./controllers/postControllers');
-const pageController = require('./controllers/pageControllers');
+const pageRoute = require("./routes/pageRoute")
+const postRoute = require("./routes/postRoute")
 
 mongoose
   .connect('mongodb://127.0.0.1/cleandb')
@@ -25,15 +24,8 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/', postController.getAllPost);
-app.post('/newpost', postController.addPost);
-app.post('/updatepost/:id', postController.updatePost);
-app.get('/post/del/:id', postController.delPost);
-
-app.get('/about', pageController.getAboutPage);
-app.get('/add_post', pageController.getAddPostPage);
-app.get('/post/:id', pageController.getPostPage);
-app.get('/post/edit/:id', pageController.getEditPage);
+// app.use('/', pageRoute);
+app.use('/', postRoute);
 
 const port = 3000;
 app.listen(3000, () => {
