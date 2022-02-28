@@ -24,7 +24,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// app.use('/', pageRoute);
+app.use('/', pageRoute);
 app.use('/', postRoute);
 
 const port = 3000;
