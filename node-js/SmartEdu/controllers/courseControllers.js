@@ -1,6 +1,18 @@
 const Courese = require('../models/Course');
 
-exports.createCourese = async (req, res) => {
+
+exports.getAllCourses = async (req, res) => {
+
+  const course = await Courese.find();
+  console.log("naber")
+  res.status(201).render("courses",{
+    course,
+    page_name: 'courses',
+  });
+
+}; 
+
+exports.createCourse = async (req, res) => {
   const course = await Courese.create(req.body);
 
   res.status(201).json({
