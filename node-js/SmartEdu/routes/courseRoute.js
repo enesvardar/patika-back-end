@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.route('/').post(courseController.createCourse); // localhost:3000/courses
 router.route('/').get(courseController.getAllCourses); // localhost:3000/courses
-router.route('/:id').get(courseController.getCourse); // localhost:3000/courses
+router.route('/:slug').get(courseController.getCourse); // localhost:3000/courses
 
 module.exports = router;
