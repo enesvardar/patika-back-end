@@ -25,7 +25,7 @@ exports.loginUser = async (req, res) => {
 
     req.session.userID = user._id;
 
-    res.redirect('/dashboard');
+    res.redirect('/');
   }
   else{
     res.status(401).send('FAIL');

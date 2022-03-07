@@ -3,13 +3,15 @@ const Category = require('../models/Category');
 
 exports.createCourse = async (req, res) => {
   
-  const course = await Course.create(req.body);
-  console.log("naber")
-
-  res.status(201).json({
-    status: 'success',
-    course,
+  console.log(req.body)
+  const course = await Course.create({
+    name:req.body.name,
+    description: req.body.description,
+    category: req.body.category,
+    user: req.session.userID,
   });
+  res.redirect('/courses');
+
 };
 
 exports.getAllCourses = async (req, res) => {

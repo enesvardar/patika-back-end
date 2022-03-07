@@ -23,10 +23,17 @@ const CoureseSchema = new Schema({
     type: String,
     unique: true,
   },
+
   category:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'Category'
+  },
+
+  user:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'User'
   }
+
 });
 
 CoureseSchema.pre('validate', function (next) {

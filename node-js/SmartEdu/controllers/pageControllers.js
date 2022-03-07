@@ -1,4 +1,6 @@
 const User = require('../models/User');
+const Category = require('../models/Category');
+const Course = require('../models/Course');
 
 exports.getIndexPage = (req, res) => {
   console.log(req.session.userID)
@@ -17,11 +19,18 @@ exports.getAboutPage = (req, res) => {
 
 exports.getDashboardPage = async (req, res) => {
 
+  const categories = await Category.find({});
   const user = await User.findOne({_id:req.session.userID})
-  console.log(user)
+  const courses = await Course.findOne({user:user})
+
+  console.log(req.session.userID)
+  console.log(courses)
+
   res.render('dashboard', {
      page_name: 'dashboard',
      user:user,
+     categories:categories,
+     courses:courses
    });
 };
 
