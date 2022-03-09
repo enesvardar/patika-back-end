@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const Category = require('../models/Category');
 const Course = require('../models/Course');
+const nodemailer = require('nodemailer')
 
 exports.getIndexPage = (req, res) => {
   console.log(req.session.userID)
@@ -21,7 +22,7 @@ exports.getDashboardPage = async (req, res) => {
 
   const categories = await Category.find({});
   const user = await User.findOne({_id:req.session.userID})
-  const courses = await Course.findOne({user:user})
+  const courses =  user.role == "teacher" ? await Course.find({user:user}) : await Course.find({_id:user.courses})
 
   console.log(req.session.userID)
   console.log(courses)
@@ -39,6 +40,13 @@ exports.getContactPage = (req, res) => {
     page_name: 'contact',
   });
 };
+
+exports.sendEmail = (req, res) => {
+  res.render('contact', {
+    page_name: 'contact',
+  });
+};
+
 
 exports.getRegisterPage = (req, res) => {
   res.render('register', {

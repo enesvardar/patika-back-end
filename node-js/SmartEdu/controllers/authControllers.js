@@ -19,8 +19,6 @@ exports.loginUser = async (req, res) => {
 
   const user = await User.findOne({ email })
 
-  console.log(user);
-
   if(user.password == password){
 
     req.session.userID = user._id;

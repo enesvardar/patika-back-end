@@ -44,6 +44,25 @@
 						
 					</div><!-- end col -->
             	</div><!-- end row -->
+
+				<div class="row mt-5"> 
+
+					<% for (let i=0; i< courses.length; i++) { %>
+					<div class="col-lg-6 col-md-6 col-12">
+						<div class="course-item mb-5">
+							<div class="course-br">
+								<div class="course-title">
+									<h2><a href="course-single.html" title=""><%= courses[i].name %></a></h2>
+								</div>
+								<div class="course-desc">
+									<p> <%= courses[i].description %> </p>
+								</div>
+							</div>
+						</div>
+					</div><!-- end col -->
+					<% } %>	
+
+
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end section -->
@@ -145,22 +164,22 @@
 				</div><!-- end row -->
 
 				<div class="row mt-5"> 
-
+					<% if(courses != null) { %>
 					<% for (let i=0; i< courses.length; i++) { %>
 					<div class="col-lg-6 col-md-6 col-12">
 						<div class="course-item mb-5">
 							<div class="course-br">
 								<div class="course-title">
-									<h2><a href="course-single.html" title="">Engineering</a></h2>
+									<h2><a href="course-single.html" title=""><%= courses[i].name %></a></h2>
 								</div>
 								<div class="course-desc">
-									<p>Lorem ipsum door sit amet, fugiat deicata avise id cum, no quo maiorum intel ogrets geuiat operts elicata libere avisse id cumlegebat, liber regione eu sit.... </p>
+									<p> <%= courses[i].description %> </p>
 								</div>
 							</div>
 						</div>
 					</div><!-- end col -->
 					<% } %>	
-
+					<% } %>	
 				</div><!-- end row -->
 
 			</div><!-- end container -->
