@@ -25,6 +25,20 @@
                         <div id="message"></div>
                         <form class="" name="contactform" method="post" action="/users/login">
                             <div class="row row-fluid">
+                                <% if (flashMessages) { %>
+                                
+                                    <% if (flashMessages.success) { %>
+                                        <div class="alert alert-success">
+                                            <%= flashMessages.success %>
+                                        </div>
+                            
+                                    <% } else if (flashMessages.error) { %>
+                                        <div class="alert alert-danger">
+                                            <%= flashMessages.error %>
+                                        </div>
+                                    <% } %>
+                            
+                                <% } %>
                                 <div class="offset-1 col-lg-10 col-md-10 col-sm-10">
                                     <input type="email" name="email" id="email" class="form-control" placeholder="Email">
                                 </div>

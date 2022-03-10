@@ -14,6 +14,7 @@ exports.createCourse = async (req, res) => {
 };
 
 exports.getAllCourses = async (req, res) => {
+  
   const categories = await Category.find({});
   const courses = await Course.find({});
 
