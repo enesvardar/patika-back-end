@@ -1,0 +1,27 @@
+const Koa = require('koa');
+const Router = require('koa-router');
+
+const app = new Koa();
+const router = new Router();
+const port = 3000
+
+router.get('/' , ctx =>{
+    ctx.status = 200
+    ctx.body = '<h1>Welcome to the Index Page </h1>'
+});
+
+router.get('/about' , ctx =>{
+    ctx.status = 200
+    ctx.body = '<h1>Welcome to the about me page</h1>'
+})
+
+router.get('/Contact' , ctx =>{
+    ctx.status = 200
+    ctx.body = '<h1>Welcome to the contact page</h1>'
+})
+
+app.use(router.routes())
+
+app.listen(port,() =>{
+    console.log(`${port} server started on port.`)
+})
