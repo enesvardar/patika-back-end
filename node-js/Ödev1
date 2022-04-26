@@ -1,0 +1,9 @@
+const pi = 3.14;
+const calculate = (r) => {
+    const result = pi*(r*r);
+    console.log(result);
+}
+
+const parameter = process.argv.slice(2)[0];
+
+calculate(parameter);
